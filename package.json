@@ -22,6 +22,8 @@
   },
   "homepage": "https://github.com/DanOlmedo/Team_Profile_Generator#readme",
   "dependencies": {
-    "inquirer": "^8.2.4"
+    "@inquirer/select": "^0.0.20-alpha.0",
+    "inquirer": "^8.2.4",
+    "inquirer-list-input": "^0.1.2"
   }
 }
