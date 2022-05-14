@@ -1,0 +1,24 @@
+{
+  "name": "team_profile_generator",
+  "version": "1.0.0",
+  "description": "Command line application to generate a team profile html",
+  "main": "index.js",
+  "scripts": {
+    "test": "index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanOlmedo/Team_Profile_Generator.git"
+  },
+  "keywords": [
+    "command",
+    "line",
+    "application"
+  ],
+  "author": "DanOlmedo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DanOlmedo/Team_Profile_Generator/issues"
+  },
+  "homepage": "https://github.com/DanOlmedo/Team_Profile_Generator#readme"
+}
