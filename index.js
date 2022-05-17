@@ -3,7 +3,21 @@ const inquirer = require('inquirer');
 // inquirer.registerPrompt('list-input');
 const fs = require('fs');
 
-console.log('Please enter manager info');
+// const newMember = inquirer
+// .prompt([
+//   {
+//     type: 'input',
+//     message: 'Would you like to add a member to the team? (yes/no)',
+//     name: 'new_mem',
+//   },
+// ]).then((response) =>{
+
+//     if(response == 'yes'){
+//     console.log('Please enter manager info');}
+//  }
+// );
+
+
 
 const Manager = inquirer
   .prompt([
@@ -27,20 +41,19 @@ const Manager = inquirer
         message: 'Office number',
         name: 'manager_office',
     },
+    {
+      type: 'list',
+      name: 'Emp1_pos',
+      message: 'Select position',
+      choices: ['Manager', 'Engineer', 'Intern'],
+    },
   ])
   .then((response) =>
-    console.log(response)
+    console.log(response),
+    // createManager(),
   );
 
-//   const Emp1 = inquirer.registerPrompt('list-input', require('./index'));
-//   inquirer.prompt([
-//        {
-//      type: 'list-input',
-//      name: 'Emp1_pos',
-//      message: 'Select position',
-//      choices: ['Manager', 'Engineer', 'Intern'],
-//    }
-//     ])
-//    .then((response) =>
-//     console.log(response)
-//   );
+function createManager(){
+  console.log('test')
+}
+
