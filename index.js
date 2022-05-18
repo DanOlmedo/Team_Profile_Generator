@@ -1,35 +1,43 @@
-const Employees = require('./classes');
+const Manager = require("./Class_files/Manager");
+const Engineer = require('./Class_files/Engineer');
+const Intern = require('./Class_files/Intern');
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-let manager1;
-let engineer1;
-let intern1;
+let managers;
+let engineers;
+let interns;
+let employee_list = [];
 
-async function roleSelection() {
+function roleSelection() {
 
-const selectedRole = await inquirer
+inquirer
     .prompt([
       {
         type: 'list',
         name: 'role',
-        message: 'Select employee role',
-        choices: ['Manager', 'Engineer', 'Intern'],
+        message: 'Would you like to add another employee or exit?',
+        choices: ['Manager', 'Engineer', 'Intern','Exit'],
       },
-    ]);
+    ]).then((choice) => {
 
-   if (selectedRole.role == 'Manager') {
-      managerInfo();
-   }
-   else if (selectedRole.role == 'Engineer') {
-     engineerInfo();
-   }
-   else if (selectedRole.role == 'Intern') {
-    internInfo();
-  }
+    if (choice.role == 'Manager') {
+        managerInfo();
+    }
+    else if (choice.role == 'Engineer') {
+       engineerInfo();
+    }
+    else if (choice.role == 'Intern') {
+      internInfo();
+    }
+    else if (choice.role == 'Exit') {
+      //Generate the html file here
+      console.log(`This is your team: ${JSON.stringify(employee_list)}`);
+    }
+  });
 }
 
-async function managerInfo(){
+function managerInfo(){
 
 inquirer
   .prompt([
@@ -54,15 +62,16 @@ inquirer
         name: 'manager_office',
     },
   ])
-  .then((response) =>
-  console.log(response),
-)
-.catch((e) => {
-  console.log(e, "err")
-});
-}
+  .then((response) => {
 
-async function engineerInfo(){
+    managers = new Manager (response.manager_name,response.manager_ID,response.manager_email,response.manager_office);
+    employee_list.push(managers.getRole());
+    employee_list.push(managers);
+    roleSelection();
+  }
+  )};
+
+function engineerInfo(){
 
  inquirer
   .prompt([
@@ -87,15 +96,16 @@ async function engineerInfo(){
         name: 'engineer_github',
     },
   ])
-  .then((response) =>
-  console.log(response),
-)
-.catch((e) => {
-  console.log(e, "err")
-});
-}
+  .then((response) => {
 
-async function internInfo(){
+    engineers = new Engineer (response.engineer_name,response.engineer_ID,response.engineer_email,response.engineer_github);
+    employee_list.push(engineers.getRole());
+    employee_list.push(engineers);
+    roleSelection();   
+  }
+  )};
+
+function internInfo(){
 
   inquirer
     .prompt([
@@ -120,12 +130,26 @@ async function internInfo(){
           name: 'intern_school',
       },
     ])
-    .then((response) =>
-      console.log(response),
-    )
-    .catch((e) => {
-      console.log(e, "err")
-    });
-  }
+    .then((response) => {
 
-  roleSelection();
+      interns = new Intern (response.intern_name,response.intern_ID,response.intern_email,response.intern_school);
+      employee_list.push(interns.getRole());
+      employee_list.push(interns);
+      roleSelection();
+    }
+    )};
+
+roleSelection();
+
+function writeToFile(fileName,data) {
+   fs.writeFile(fileName,data,function(err){
+     console.log(data)
+     if (err) {
+       return console.log(err)
+     }
+     else {
+       console.log("Succes")
+     }
+   })
+}
+

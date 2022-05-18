@@ -4,7 +4,7 @@
   "description": "Command line application to generate a team profile html",
   "main": "index.js",
   "scripts": {
-    "test": "index.js"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -23,7 +23,9 @@
   "homepage": "https://github.com/DanOlmedo/Team_Profile_Generator#readme",
   "dependencies": {
     "@inquirer/select": "^0.0.20-alpha.0",
+    "@types/jest": "^27.5.1",
     "inquirer": "^8.2.4",
-    "inquirer-list-input": "^0.1.2"
+    "inquirer-list-input": "^0.1.2",
+    "jest": "^28.1.0"
   }
 }

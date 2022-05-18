@@ -25,13 +25,13 @@ class Employee {
     }
 }
 
-const test = new Employee('Dan','123','mailtest')
+// const test = new Employee('Dan','123','mailtest')
 
-test.getName();
-test.getId();
-test.getEmail();
-test.getRole();
-console.log('    ')
+// test.getName();
+// test.getId();
+// test.getEmail();
+// test.getRole();
+// console.log('    ')
 
 class Manager extends Employee {
 
@@ -51,14 +51,14 @@ class Manager extends Employee {
     }
 }
 
-const test2 = new Manager('Den','456','mailtest2','off1')
+// const test2 = new Manager('Den','456','mailtest2','off1')
 
-test2.getName();
-test2.getId();
-test2.getEmail();
-test2.getRole();
-test2.getOfficeNumber();
-console.log('    ')
+// test2.getName();
+// test2.getId();
+// test2.getEmail();
+// test2.getRole();
+// test2.getOfficeNumber();
+// console.log('    ')
 
 class Engineer extends Employee {
 
@@ -79,14 +79,14 @@ class Engineer extends Employee {
 
 }
 
-const test3 = new Engineer('Don','789','mailtest3','gitTest')
+// const test3 = new Engineer('Don','789','mailtest3','gitTest')
 
-test3.getName();
-test3.getId();
-test3.getEmail();
-test3.getRole();
-test3.getGithub();
-console.log('    ')
+// test3.getName();
+// test3.getId();
+// test3.getEmail();
+// test3.getRole();
+// test3.getGithub();
+// console.log('    ')
 
 class Intern extends Employee {
 
@@ -107,13 +107,13 @@ class Intern extends Employee {
 
 }
 
-const test4 = new Intern('Din','111','mailtest4','UIA')
+// const test4 = new Intern('Din','111','mailtest4','UIA')
 
-test4.getName();
-test4.getId();
-test4.getEmail();
-test4.getRole();
-test4.getSchool();
-console.log('    ')
+// test4.getName();
+// test4.getId();
+// test4.getEmail();
+// test4.getRole();
+// test4.getSchool();
+// console.log('    ')
 
-module.exports = Employee, Manager, Engineer, Intern;
+module.exports = {Employee, Manager, Engineer, Intern}
