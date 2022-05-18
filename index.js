@@ -1,6 +1,5 @@
 const Employees = require('./classes');
 const inquirer = require('inquirer');
-// inquirer.registerPrompt('list-input');
 const fs = require('fs');
 
 // const newMember = inquirer
@@ -18,8 +17,28 @@ const fs = require('fs');
 // );
 
 
+async function roleSelection() {
 
-const Manager = inquirer
+const selectedRole = await inquirer
+    .prompt([
+      {
+        type: 'list',
+        name: 'role',
+        message: 'Select employee role',
+        choices: ['Manager', 'Engineer', 'Intern'],
+      },
+    ])
+    .then((response) => console.log(response),
+      await managerInfo()
+    )
+    .catch((e) => {
+      console.log(e, "err");
+    });
+}
+
+function  managerInfo(){
+
+inquirer
   .prompt([
     {
       type: 'input',
@@ -41,19 +60,79 @@ const Manager = inquirer
         message: 'Office number',
         name: 'manager_office',
     },
+  ])
+  .then((response) =>
+  console.log(response),
+)
+.catch((e) => {
+  console.log(e, "err")
+});
+}
+
+ async  function  engineerInfo(){
+
+ inquirer
+  .prompt([
     {
-      type: 'list',
-      name: 'Emp1_pos',
-      message: 'Select position',
-      choices: ['Manager', 'Engineer', 'Intern'],
+      type: 'input',
+      message: 'Name',
+      name: 'engineer_name',
+    },
+    {
+        type: 'input',
+        message: 'Employee ID',
+        name: 'engineer_ID',
+    },
+    {
+        type: 'input',
+        message: 'Email',
+        name: 'engineer_email',
+    },
+    {
+        type: 'input',
+        message: 'Github',
+        name: 'engineer_github',
     },
   ])
   .then((response) =>
-    console.log(response),
-    // createManager(),
-  );
-
-function createManager(){
-  console.log('test')
+  console.log(response),
+)
+.catch((e) => {
+  console.log(e, "err")
+});
 }
 
+async  function  internInfo(){
+
+  inquirer
+    .prompt([
+      {
+        type: 'input',
+        message: 'Name',
+        name: 'intern_name',
+      },
+      {
+          type: 'input',
+          message: 'Employee ID',
+          name: 'intern_ID',
+      },
+      {
+          type: 'input',
+          message: 'Email',
+          name: 'intern_email',
+      },
+      {
+          type: 'input',
+          message: 'School',
+          name: 'intern_school',
+      },
+    ])
+    .then((response) =>
+      console.log(response),
+    )
+    .catch((e) => {
+      console.log(e, "err")
+    });
+  }
+
+  await roleSelection();
