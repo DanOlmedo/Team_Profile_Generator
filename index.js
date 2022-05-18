@@ -2,20 +2,7 @@ const Employees = require('./classes');
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-// const newMember = inquirer
-// .prompt([
-//   {
-//     type: 'input',
-//     message: 'Would you like to add a member to the team? (yes/no)',
-//     name: 'new_mem',
-//   },
-// ]).then((response) =>{
-
-//     if(response == 'yes'){
-//     console.log('Please enter manager info');}
-//  }
-// );
-
+let employee1;
 
 async function roleSelection() {
 
@@ -27,13 +14,9 @@ const selectedRole = await inquirer
         message: 'Select employee role',
         choices: ['Manager', 'Engineer', 'Intern'],
       },
-    ])
-    .then((response) => console.log(response),
-      await managerInfo()
-    )
-    .catch((e) => {
-      console.log(e, "err");
-    });
+    ]);
+
+    employee1 = selectedRole.role;
 }
 
 function  managerInfo(){
@@ -135,4 +118,4 @@ async  function  internInfo(){
     });
   }
 
-  await roleSelection();
+  roleSelection();
