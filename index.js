@@ -2,7 +2,9 @@ const Employees = require('./classes');
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-let employee1;
+let manager1;
+let engineer1;
+let intern1;
 
 async function roleSelection() {
 
@@ -16,10 +18,18 @@ const selectedRole = await inquirer
       },
     ]);
 
-    employee1 = selectedRole.role;
+   if (selectedRole.role == 'Manager') {
+      managerInfo();
+   }
+   else if (selectedRole.role == 'Engineer') {
+     engineerInfo();
+   }
+   else if (selectedRole.role == 'Intern') {
+    internInfo();
+  }
 }
 
-function  managerInfo(){
+async function managerInfo(){
 
 inquirer
   .prompt([
@@ -52,7 +62,7 @@ inquirer
 });
 }
 
- async  function  engineerInfo(){
+async function engineerInfo(){
 
  inquirer
   .prompt([
@@ -85,7 +95,7 @@ inquirer
 });
 }
 
-async  function  internInfo(){
+async function internInfo(){
 
   inquirer
     .prompt([
