@@ -13,7 +13,7 @@ let employee_array = [];
 
 function generateCards(){
   
-  for (let i = 0; i < employee_list.length; i++) {
+  for (let i = 1; i < employee_list.length; i++) {
       
       const card_template = 
       `
@@ -28,9 +28,10 @@ function generateCards(){
               </div>
       </div>
       `
-      employee_array.push(card_template);
       // console.log(card_template);
 
+      employee_array.push(card_template);
+      
   }
 
 };
