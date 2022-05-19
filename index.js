@@ -1,13 +1,86 @@
 const Manager = require("./Classes/Manager");
 const Engineer = require('./Classes/Engineer');
 const Intern = require('./Classes/Intern');
-const inquirer = require('inquirer');
+const cardGenerator = require('./HTML_generators/cardgen');
 const fs = require('fs');
+const inquirer = require('inquirer');
 
 let managers;
 let engineers;
 let interns;
 let employee_list = [];
+let employee_array = [];
+
+function generateCards(){
+  
+  for (let i = 0; i < employee_list.length; i++) {
+      
+      const card_template = 
+      `
+      <div class="card">
+          <img src="./images/avatar_1.jpg" alt="Avatar">
+              <div class="container" id="cardtext">
+                  <h1>Name: ${employee_list[i].name}</h1>
+                  <h1>Role: ${employee_list[i].type}</h1>
+                  <h1>ID: ${employee_list[i].id}</h1>
+                  <h1>Email: ${employee_list[i].email}</h1>
+                  <h1>Of. number, GitHub or school:${employee_list[i].spec}</h1>
+              </div>
+      </div>
+      `
+      employee_array.push(card_template);
+      // console.log(card_template);
+  }};
+
+  function generateHTML(){
+
+    generateCards();
+    
+    const html_template =
+    
+    `<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./style.css">
+        <title>Your team profile</title>
+    </head>
+    <body>
+    
+        <header id="header">
+            <h1>Here is your team profile</h1>
+        </header>
+    
+        <div class="main1">
+    
+        ${employee_array}
+    
+        </div>
+    
+        <a href="#header"><button id="btn1">Go to top</button></a> 
+    
+        <script src="./classes.js"></script>
+    </body>
+    </html>
+    `;
+    
+    console.log(html_template);
+    return data_test = html_template;
+    
+  }
+
+  function writeToFile(fileName,data) {
+    fs.writeFile(fileName,data,function(err){
+      console.log(data)
+      if (err) {
+        return console.log(err)
+      }
+      else {
+        console.log("Succes")
+      }
+    })
+ }
 
 function roleSelection() {
 
@@ -33,6 +106,8 @@ inquirer
     else if (choice.role == 'Exit') {
       //Generate the html file here
       console.log(`This is your team: ${JSON.stringify(employee_list)}`);
+      generateHTML();
+      writeToFile("index.html",data_test);
     }
   });
 }
@@ -141,15 +216,5 @@ function internInfo(){
 
 roleSelection();
 
-function writeToFile(fileName,data) {
-   fs.writeFile(fileName,data,function(err){
-     console.log(data)
-     if (err) {
-       return console.log(err)
-     }
-     else {
-       console.log("Succes")
-     }
-   })
-}
+
 
