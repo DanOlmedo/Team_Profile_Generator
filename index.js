@@ -21,7 +21,7 @@ function generateCards(){
           <img src="./images/avatar_1.jpg" alt="Avatar">
               <div class="container" id="cardtext">
                   <h1>Name: ${employee_list[i].name}</h1>
-                  <h1>Role: ${employee_list[i].type}</h1>
+                  <h1>Role: ${employee_list[i].role}</h1>
                   <h1>ID: ${employee_list[i].id}</h1>
                   <h1>Email: ${employee_list[i].email}</h1>
                   <h1>Of. number, GitHub or school:${employee_list[i].spec}</h1>
@@ -30,7 +30,10 @@ function generateCards(){
       `
       employee_array.push(card_template);
       // console.log(card_template);
-  }};
+
+  }
+
+};
 
   function generateHTML(){
 
@@ -122,6 +125,11 @@ inquirer
       name: 'manager_name',
     },
     {
+      type: 'input',
+      message: 'role',
+      name: 'manager_role',
+    },
+    {
         type: 'input',
         message: 'Employee ID',
         name: 'manager_ID',
@@ -139,7 +147,7 @@ inquirer
   ])
   .then((response) => {
 
-    managers = new Manager (response.manager_name,response.manager_ID,response.manager_email,response.manager_office);
+    managers = new Manager (response.manager_name,response.manager_role,response.manager_ID,response.manager_email,response.manager_office);
     employee_list.push(managers.getRole());
     employee_list.push(managers);
     roleSelection();
@@ -154,6 +162,11 @@ function engineerInfo(){
       type: 'input',
       message: 'Name',
       name: 'engineer_name',
+    },
+    {
+      type: 'input',
+      message: 'Role',
+      name: 'engineer_role',
     },
     {
         type: 'input',
@@ -173,7 +186,7 @@ function engineerInfo(){
   ])
   .then((response) => {
 
-    engineers = new Engineer (response.engineer_name,response.engineer_ID,response.engineer_email,response.engineer_github);
+    engineers = new Engineer (response.engineer_name,response.engineer_role,response.engineer_ID,response.engineer_email,response.engineer_github);
     employee_list.push(engineers.getRole());
     employee_list.push(engineers);
     roleSelection();   
@@ -188,6 +201,11 @@ function internInfo(){
         type: 'input',
         message: 'Name',
         name: 'intern_name',
+      },
+      {
+        type: 'input',
+        message: 'Role',
+        name: 'intern_role',
       },
       {
           type: 'input',
@@ -207,7 +225,7 @@ function internInfo(){
     ])
     .then((response) => {
 
-      interns = new Intern (response.intern_name,response.intern_ID,response.intern_email,response.intern_school);
+      interns = new Intern (response.intern_name,response.intern_role,response.intern_ID,response.intern_email,response.intern_school);
       employee_list.push(interns.getRole());
       employee_list.push(interns);
       roleSelection();
