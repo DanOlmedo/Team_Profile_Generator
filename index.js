@@ -13,7 +13,7 @@ let employee_array = [];
 
 function generateCards(){
   
-  for (let i = 1; i < employee_list.length; i++) {
+  for (let i = 1; i < employee_list.length; i+=2) {
       
       const card_template = 
       `
