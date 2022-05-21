@@ -168,10 +168,14 @@ This homework is graded based on the following criteria:
 You are required to submit the following for review:
 
 * A walkthrough video that demonstrates the functionality of the application and passing tests.
+  
+* Walkthrough video: https://drive.google.com/file/d/162ogtk4d3Loj-G_QiTUqTblhjgVafl2S/view?usp=sharing
 
 * A sample HTML file generated using your application.
 
 * The URL of the GitHub repository, with a unique name and a readme describing the project.
+  
+* Respository URL: https://github.com/DanOlmedo/Team_Profile_Generator
 
 ---
 © 2022 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
